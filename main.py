@@ -23,6 +23,7 @@ class CarView(GridLayout):
     rearRight = NumericProperty(0)
     currentGear = NumericProperty(0)
     throttlePosition = NumericProperty(0)
+    clutchPosition = NumericProperty(0)
     fuelMeter = NumericProperty(0)
     currentEngineRpm = StringProperty('000')
     currentWheelRpm = StringProperty('000')
@@ -41,6 +42,7 @@ class CarView(GridLayout):
         self.rearRight = self.theCar.theEngine.theGearbox.wheels['rearRight'].orientation
         self.currentGear = self.theCar.theEngine.theGearbox.currentGear
         self.throttlePosition = self.theCar.theEngine.throttlePosition
+        self.clutchPosition = self.theCar.theEngine.theGearbox.clutchPosition
         self.fuelMeter = self.theCar.theEngine.theTank.contents
         self.currentEngineRpm = str(round(self.theCar.theEngine.currentRpm)).zfill(3)
         self.currentWheelRpm = str(round(self.theCar.theEngine.currentRpm * self.theCar.theEngine.theGearbox.gears[self.theCar.theEngine.theGearbox.currentGear])).zfill(3)

@@ -42,13 +42,14 @@ class Gearbox(object):
         self.wheels = {"frontLeft": Wheel(), "frontRight": Wheel(), "rearLeft": Wheel(), "rearRight": Wheel()}
         self.currentGear = 0
         self.clutchEngaged = False
+        self.clutchPosition = 0
         self.gears = [0, 0.8, 1, 1.4, 2.2, 3.8]
 
     #Metode som skal sørger for at skifte gear op
     def shiftUp(self):
         #Tjekker om det nuværende gear er det samme som længden af listen gear - 1 eller clutchEngaged er True.
         #Den bliver True hvis en af operanderne er true
-        if(self.currentGear == len(self.gears)-1 or self.clutchEngaged == True):
+        if(self.currentGear == len(self.gears)-1 or self.clutchEngaged == True or self.clutchPosition <= 0.3 or self.clutchPosition >= 0.4):
             pass
         else:
             self.currentGear += 1
@@ -56,7 +57,7 @@ class Gearbox(object):
     def shiftDown(self):
         #Tjekker om det nuværende gear er lig 0 eller clutchEngaged er True.
         #Den bliver True hvis en af operanderne er true
-        if(self.currentGear == 0 or self.clutchEngaged == True):
+        if(self.currentGear == 0 or self.clutchEngaged == True or self.clutchPosition <= 0.3 or self.clutchPosition >= 0.4):
             pass
         else:
             self.currentGear -= 1
